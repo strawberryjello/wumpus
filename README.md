@@ -1,3 +1,6 @@
+See the step-by-step tutorial here:
+https://practicingruby.com/articles/wumpus
+
 Instructions for DIY Hunt the Wumpus
 
 1) Create a branch of your own to do your work on:
