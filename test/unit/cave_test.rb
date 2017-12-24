@@ -5,11 +5,11 @@ require_relative "../helper"
 describe "A cave" do
   let(:cave)  { Wumpus::Cave.dodecahedron }
   let(:rooms) { (1..20).map { |i| cave.room(i) } }
-  
+
   it "has 20 rooms that each connect to exactly three other rooms" do
     rooms.each do |room|
       room.neighbors.count.must_equal(3)
-      
+
       assert room.neighbors.all? { |e| e.neighbors.include?(room) }
     end
   end
@@ -18,10 +18,10 @@ describe "A cave" do
     sampling = Set.new
 
     must_eventually("randomly select each room") do
-      new_room = cave.random_room 
+      new_room = cave.random_room
       sampling << new_room
 
-      sampling == Set[*rooms] 
+      sampling == Set[*rooms]
     end
   end
 

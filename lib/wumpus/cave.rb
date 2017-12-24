@@ -3,15 +3,18 @@ require "json"
 module Wumpus
   class Cave
     def self.dodecahedron
-      raise NotImplementedError, "See lib/wumpus/cave.rb"
+      self.new self.from_json("data/dodecahedron.json")
     end
 
     def self.from_json(filename)
-      raise NotImplementedError, "See lib/wumpus/cave.rb"
+      JSON.parse File.readlines(filename).join
     end
 
     def initialize(edges)
-      raise NotImplementedError, "See lib/wumpus/cave.rb"
+      @edges = edges
+      # edges.each do |edge|
+      #   self.room(edge[0]).connect(self.room edge[1])
+      # end
     end
 
     def add_hazard(thing, count)
@@ -35,7 +38,11 @@ module Wumpus
     end
 
     def room(number)
-      raise NotImplementedError, "See lib/wumpus/cave.rb"
+      neighbors = @edges.find_all { |e| e[0] == number || e[1] == number }.flatten.reject { |n| n == number }
+
+      room = Room.new number
+      neighbors.each { |n| room.connect(Room.new n) }
+      room
     end
   end
 end
