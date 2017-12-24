@@ -7,7 +7,7 @@ describe "A room" do
     room.number.must_equal(12)
   end
 
-  it "may contain hazards" do 
+  it "may contain hazards" do
     # rooms start out empty
     assert room.empty?
 
@@ -37,7 +37,7 @@ describe "A room" do
     end
 
     it "has two-way connections to neighbors" do
-      exit_numbers.each do |i| 
+      exit_numbers.each do |i|
         # a neighbor can be looked up by room number
         room.neighbor(i).number.must_equal(i)
 
@@ -53,7 +53,7 @@ describe "A room" do
     it "can choose a neighbor randomly" do
       exit_numbers.must_include(room.random_neighbor.number)
     end
-    
+
     it "is not safe if it has hazards" do
       room.add(:wumpus)
 
