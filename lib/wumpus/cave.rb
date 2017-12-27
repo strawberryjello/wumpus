@@ -7,7 +7,7 @@ module Wumpus
     end
 
     def self.from_json(filename)
-      JSON.parse File.readlines(filename).join
+      JSON.parse File.read(filename)
     end
 
     def initialize(edges)
