@@ -12,9 +12,15 @@ module Wumpus
 
     def initialize(edges)
       @edges = edges
-      # edges.each do |edge|
-      #   self.room(edge[0]).connect(self.room edge[1])
-      # end
+      @rooms = []
+
+      (1..20).each { |i| @rooms << Room.new(i) }
+
+      edges.each do |edge|
+        room1 = @rooms.find { |r| r.number == edge[0] }
+        room2 = @rooms.find { |r| r.number == edge[1] }
+        room1.connect room2
+      end
     end
 
     def add_hazard(thing, count)
@@ -38,11 +44,7 @@ module Wumpus
     end
 
     def room(number)
-      neighbors = @edges.find_all { |e| e[0] == number || e[1] == number }.flatten.reject { |n| n == number }
-
-      room = Room.new number
-      neighbors.each { |n| room.connect(Room.new n) }
-      room
+      @rooms.find { |r| r.number == number }
     end
   end
 end
