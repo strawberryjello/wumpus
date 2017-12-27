@@ -1,6 +1,8 @@
 See the step-by-step tutorial here:
 https://practicingruby.com/articles/wumpus
 
+Ruby version: 2.1.5 (the original tests fail in 2.3.5)
+
 Instructions for DIY Hunt the Wumpus
 
 1) Create a branch of your own to do your work on:
