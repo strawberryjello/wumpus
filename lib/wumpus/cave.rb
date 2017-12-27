@@ -28,7 +28,7 @@ module Wumpus
     end
 
     def random_room
-      raise NotImplementedError, "See lib/wumpus/cave.rb"
+      @rooms.sample
     end
 
     def move(thing, from: raise, to: raise)
