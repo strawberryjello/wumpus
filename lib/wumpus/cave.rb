@@ -24,7 +24,7 @@ module Wumpus
     end
 
     def add_hazard(thing, count)
-      raise NotImplementedError, "See lib/wumpus/cave.rb"
+      (1..count).each { self.random_room.add thing }
     end
 
     def random_room
@@ -32,15 +32,16 @@ module Wumpus
     end
 
     def move(thing, from: raise, to: raise)
-      raise NotImplementedError, "See lib/wumpus/cave.rb"
+      from.remove thing
+      to.add thing
     end
 
     def room_with(thing)
-      raise NotImplementedError, "See lib/wumpus/cave.rb"
+      @rooms.find { |r| r.has? thing }
     end
 
     def entrance
-      raise NotImplementedError, "See lib/wumpus/cave.rb"
+      @rooms.find &:safe?
     end
 
     def room(number)
