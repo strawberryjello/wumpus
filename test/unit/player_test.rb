@@ -47,7 +47,7 @@ describe "the player" do
     player.explore_room
 
     sensed.must_equal(Set["You hear a rustling", "You smell something terrible"])
-    
+
     assert encountered.empty?
   end
 
@@ -61,7 +61,7 @@ describe "the player" do
     player.enter(bat_room)
 
     encountered.must_equal(Set["The bats whisk you away!"])
-    
+
     assert sensed.empty?
   end
 
